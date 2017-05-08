@@ -1,0 +1,49 @@
+# binaries
+*.pdf
+*.ps
+*.rtf
+*.doc
+*.docx
+*.xls
+*.xlsx
+
+*.gif
+*.jpg
+*.png
+*.tiff
+
+*.flac
+*.mp3
+*.ogg
+
+*.asf
+*.avi
+*.mkv
+*.mp4
+*.wmv
+
+*.ttf
+*.eot
+*.woff
+
+*.zip
+*.rar
+*.deb
+*.gem
+*.exe
+*.msi
+
+# tags
+tags
+GPATH
+GRTAGS
+GTAGS
+
+# compiler
+*.o
+*.crf
+
+# python
+*.pyc
+*.pyd
+*.dll
