@@ -33,6 +33,7 @@
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'Shougo/unite.vim'
+    "Plug 'Shougo/denite.nvim'
     Plug 'Shougo/vimfiler.vim'
     "Plug 'ctrlpvim/ctrlp.vim'
     Plug 'milkypostman/vim-togglelist'
@@ -63,6 +64,7 @@
     "Plug 'Rip-Rip/clang_complete'
     Plug 'davidhalter/jedi-vim'
     Plug 'vim-scripts/OmniCppComplete'
+    "Plug 'maralla/completor.vim'
     Plug 'vim-scripts/DoxygenToolkit.vim'
     Plug 'mptre/vim-printf'
 
@@ -227,14 +229,15 @@ if has("gui_running")
     else
         set guifont=DejaVu\ Sans\ Mono\ 11
     endif
-    set guioptions=agcemrh
-    "              |||
-    "              ||+e -- use simple dialogs rather than pop-ups
-    "              |+c  use GUI tabs, not console style tabs
+    set guioptions=acgmrh
+    "              || ||
+    "              || |+r -- right scroll bar
+    "              || +m -- menu bar
+    "              |+c -- use simple dialogs rather than pop-ups
     "              +a -- autoselect highlighted text into "*
+    "              -e -- non-GUI tabline
     set mousehide " hide the mouse cursor when typing
     set guitablabel=%m%t%R%H
-    set showtabline=0
     winpos 160 100
 endif
 " }
@@ -287,7 +290,6 @@ endif
         let g:airline#extensions#tagbar#enabled = 0
         let g:airline#extensions#tabline#enabled = 1
         let g:airline#extensions#tabline#tab_nr_type = 1
-        let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
         let g:airline#extensions#tabline#show_splits = 0
     " }
     " Tagbar Settins {
@@ -329,10 +331,12 @@ endif
                 \ 'ie'  :0,
                 \ }
     " }
-    " Unite {
+    " Unite / denite {
         if executable('ag')
             let g:unite_source_rec_async_command = [ 'ag', '--nocolor', '--nogroup',
                         \  '-g', '' ]
+            "call denite#custom#var('file_rec', 'command',
+            "            \ [ 'ag', '--nocolor', '--nogroup', '-g', '' ])
         endif
     " }
     " CtrlP {
@@ -386,7 +390,7 @@ endif
     nmap <Leader>td :TODOToggle<CR>
     nmap <Leader>ll :Errors<CR>
     nmap <leader>aa  :Ack<cr>
-    " unite {
+    " unite / denite {
         nmap <C-u> [unite]
         nnoremap [unite]m :<C-u>Unite bookmark<CR>
         nnoremap [unite]b :<C-u>Unite -start-insert buffer<CR>
